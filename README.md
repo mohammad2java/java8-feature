@@ -7,3 +7,4 @@ This document describe complete project with new concept of java8.
 
 Interface New feature
 -----------------------
+Added following.
