@@ -1,4 +1,4 @@
-This document describe complete project with new concept of java8.
+This document describe complete project with new concept of java8.(This is branch2)
 -------------------------------------------------------------------------
 1-Interface new feature <br>
 2-Lambda Expression(->) <br>
