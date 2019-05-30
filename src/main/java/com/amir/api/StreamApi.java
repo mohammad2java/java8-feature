@@ -34,6 +34,10 @@ public class StreamApi {
 				.collect(Collectors.toList());
 		System.out.println(sortedListUsingComparator);
 	
+		//using map method to create new list of same size.
+		List<String> mapStream = nameList.stream().map(name->name.toUpperCase()).collect(Collectors.toList());
+		System.out.println(mapStream);
+		
 		System.out.println("OriginalList"+nameList);
 		
 				
