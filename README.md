@@ -1,45 +1,45 @@
 This document describe complete project with new concept of java8.
 -------------------------------------------------------------------------
-1-Interface new feature <br>
-2-Lambda Expression(->) <br>
-3-new Operator(::) <br>
-4-Java8 API--Stream & date & functinalInterface <br>
-5-Optional class <br>
-6-forEach
+	1-Interface new feature <br>
+	2-Lambda Expression(->) <br>
+	3-new Operator(::) <br>
+	4-Java8 API--Stream & date & functinalInterface <br>
+	5-Optional class <br>
+	6-forEach
 
 
 Interface New feature (default & static method)
 ----------------------------------------------
-both above method can use to extends the interface function without effecting of implement class.
+	both above method can use to extends the interface function without effecting of implement class.
 
 1-method definition allowed with default keyword
 -----------------------------------------------	 
- its same as instance method of class we use default keyword as modifier of method.
-	 Example:
-		  
-		  default String helloDefaultInInterface() {
-			 return "default";	
-			}
+		 its same as instance method of class we use default keyword as modifier of method.
+			 Example:
+
+				  default String helloDefaultInInterface() {
+					 return "default";	
+					}
 
 2-method definition allowed with static keyword
 -----------------------------------------	
-	 Example:
-	 
-	  static String helloStaticMethodInInterface() {
-		return "staticMethodInInterface";
-	}
-	
-	
-	Note: before to java-8 we  used only public,abstract,strictfp keywords.
-	now after java-8 two keywords added to used --default, static
-	if you used any others keyword you will get following error.
-	"Illegal modifier for the interface method helloStaticMethodInInterface; only public, 	abstract, default, static and strictfp are permitted"
+		 Example:
+
+		  static String helloStaticMethodInInterface() {
+			return "staticMethodInInterface";
+		}
+
+
+		Note: before to java-8 we  used only public,abstract,strictfp keywords.
+		now after java-8 two keywords added to used --default, static
+		if you used any others keyword you will get following error.
+		"Illegal modifier for the interface method helloStaticMethodInInterface; only public, 	abstract, default, static and strictfp are permitted"
 	
 strictfp
 ------------	
-	strictfp keywords can use as method modifier or class or interface. only abstract 	method cant use this.
-	it used to calculate same floating point result irrespective to platform processors.(16bit/32bit/64bit )
-	strictfp ---> strict to floating point as result irrespective to machine processors(16bit/32bit/64bit )
+		strictfp keywords can use as method modifier or class or interface. only abstract 	method cant use this.
+		it used to calculate same floating point result irrespective to platform processors.(16bit/32bit/64bit )
+		strictfp ---> strict to floating point as result irrespective to machine processors(16bit/32bit/64bit )
 	
 	
 	
@@ -62,8 +62,8 @@ Functional Interface
 
 LamdaExpression:
 ----------------
-lambda expression is syntactic sugar or shortest way of implementation of functional interface.
-in place of lambda expression we can use anonymous classes.
+	lambda expression is syntactic sugar or shortest way of implementation of functional interface.
+	in place of lambda expression we can use anonymous classes.
 
 How to write LamdaExpression
 ----------------------------
@@ -156,7 +156,17 @@ Stream Api
 		} 
 
 
+ Stream class having following imp methods
+---------------------------------------------
 
+	processing by filter() method  -- used to filter the existing objects
+	processing by map() method     -- used to modify the exisitng  object/adding new object based on existing
+	processing by collect() method -- used to collect all stream object into a collection(using Collectors.toList() util class)
+	Processing by count()method     -- count
+	Processing by sorted()method    ---sorting natural or using comparator
+	Processing by min() and max() methods  -- max or min using natural or comparator
+	forEach() method      --iterating
+	toArray() method      -- converting into array.
 
 
 Joda Date api
