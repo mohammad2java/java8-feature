@@ -17,29 +17,28 @@ Interface New feature (default & static method)
 		 its same as instance method of class we use default keyword as modifier of method.
 			 Example:
 
-				  default String helloDefaultInInterface() {
-					 return "default";	
-					}
+	default String helloDefaultInInterface() {
+				 return "default";	
+			}
 
 2-method definition allowed with static keyword
 -----------------------------------------	
 		 Example:
-
 		  static String helloStaticMethodInInterface() {
 			return "staticMethodInInterface";
 		}
 
-
 		Note: before to java-8 we  used only public,abstract,strictfp keywords.
 		now after java-8 two keywords added to used --default, static
 		if you used any others keyword you will get following error.
-		"Illegal modifier for the interface method helloStaticMethodInInterface; only public, 	abstract, default, static and strictfp are permitted"
+		"Illegal modifier for the interface method helloStaticMethodInInterface; 
+		only public, abstract, default, static and strictfp are permitted"
 	
 strictfp
 ------------	
-		strictfp keywords can use as method modifier or class or interface. only abstract 	method cant use this.
-		it used to calculate same floating point result irrespective to platform processors.(16bit/32bit/64bit )
-		strictfp ---> strict to floating point as result irrespective to machine processors(16bit/32bit/64bit )
+	strictfp keywords can use as method modifier or class or interface. only abstract method cant use this.
+	it used to calculate same floating point result irrespective to platform processors.(16bit/32bit/64bit )
+	strictfp ---> strict to floating point as result irrespective to machine processors(16bit/32bit/64bit )
 	
 	
 	
