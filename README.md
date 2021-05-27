@@ -59,6 +59,13 @@ Functional Interface
 	
 	basically functional interface normally used in lamdaexpression(functional programming).
 
+	MostIMP Inbuilt Functional Interface
+	1) R java.util.function.Function.apply(T t)     -- example -streamObj.map()
+	2) boolean java.util.function.Predicate.test(T t)  -- streamObj.filter()
+	3) void java.util.function.Consumer.accept(T t)  --streamObject.foreach()
+	4) R java.util.function.Supplier.get()   --Stream.generate()
+	
+
 LamdaExpression:
 ----------------
 	lambda expression is syntactic sugar or shortest way of implementation of functional interface.
@@ -100,10 +107,23 @@ Stream Api
 --------------
 	Now java collection can used as stream of object using stream api to improve performance.
 	Need to learn
+	0) basic concept of stream
 	1) foreach method
 	2) Stream object
-	3) built-in functional interface. (Function,Predicate)
+	3) built-in functional interface. (Function,Predicate,Supplier,Consumer)
 	4)Convert Regex to Predicate
+
+
+		basic concept of stream
+		---------------------------
+		every stream consist 3 part 1) initialization of stream 2) processing of stream 3) termination of stream
+		flow of each part will be:  init->processing->terminate
+		 basic-rule
+		 1) - modification in stream will not impact of its source(generator) object
+		 2) - once stream terminated cant be use again.
+		 3) init --  create Stream object from any source object 
+		 4) processing --  applying some non terminated method onto the stream like .filter,map,
+		 5) terminate -- applying some terminated method to terminate the stream & get expected result ,like foreach,collect
 
 
 	//using collections
@@ -112,16 +132,20 @@ Stream Api
 			Consumer<String> cons = name-> System.out.println(name.toUpperCase());
 			names.forEach(cons);
 
-		//ways to create streams...
+		//ways to create streams...(comes under the initialization)
+		-----------------------------------------------------------------
 		
-		//1) using stream() method of collection. stream is default method of Collection Interface
+		1) Collection to Stream - using collection.stream() - This is default method of Collection Interface
 		Stream<String> nameStreams = names.stream();
 		nameStreams.forEach(cons);
 		
 		
-		///2) using Stream.of methods
+		2) literal to Stream --using Stream.of methods
 		Stream<Integer> stream = Stream.of(1,2,3,4,5,6,7,8,9);
         stream.forEach(System.out::println);
+        
+      3)Array to Stream  
+        
         
         //Predicate Interface 
         //its used to send test/validate someinput...
