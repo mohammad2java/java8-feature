@@ -246,7 +246,7 @@ Joda Date api
 	
 	=> you can get Date object from TimeAPI using toInstant and vice versa.
 	=> Instant is availabe in Date,Calendar & Time API also.
-	*
+	=> Alternative for simpledataformat is DateTimeFormatter .
 	*
 	*/
 		

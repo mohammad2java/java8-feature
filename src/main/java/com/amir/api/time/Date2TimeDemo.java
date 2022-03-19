@@ -1,8 +1,12 @@
 package com.amir.api.time;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.TemporalAccessor;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -26,6 +30,10 @@ public class Date2TimeDemo {
 	  TimeZone.setDefault(TimeZone.getTimeZone(ZoneId.of("Asia/Manila")));
 	  time-package api happlily working with specified TimeZone.
 	
+	  SimpleDateFormat we used for lagecy with java.util.Date
+	  
+	
+	
 	 Time API
 	 -------------
 	 LocalDate  -> deals with date only
@@ -37,7 +45,10 @@ public class Date2TimeDemo {
 	 you can get Date object from TimeAPI using toInstant and vice versa.
 	 	
 	 Instant is availabe in Date,Calendar & Time API also.
-	*
+	* alternative for SimpleDateFormat is DateTimeFormatter.
+	* 
+	* you can use format method of time api or format method of DateTimeFormatter class.
+	* 
 	*
 	*/
 	
@@ -45,25 +56,23 @@ public class Date2TimeDemo {
 	
 	public static void main(String[] args) {
 		
-		//TimeZone.setDefault(TimeZone.getTimeZone(ZoneId.of("Asia/Manila")));
+		TimeZone.setDefault(TimeZone.getTimeZone(ZoneId.of("Asia/Manila")));
 		ZonedDateTime now = ZonedDateTime.now();
 		System.out.println(now);
-		ZonedDateTime addedOne = now.plusHours(2);
-		Date from = Date.from(addedOne.toInstant());
-		System.out.println(from.after(new Date()));
+		//ZonedDateTime addedOne = now.plusHours(2);
+		
+		String format = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(now);
+		System.out.println(now.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));
 		
 	
-		// Time API
-		//--------------
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("YYYY-MM-dd");
+		System.out.println(now.format(dtf));
 		
-		Calendar cal = Calendar.getInstance();
-		Date date = new Date();
-		Instant now2 = Instant.now();
-		Date from2 = Date.from(now2);
-		ZonedDateTime zdt = ZonedDateTime.ofInstant(now2, TimeZone.getTimeZone("Asia/Manila").toZoneId());
-		System.out.println(from2);
-		System.out.println(zdt);
-		
+		LocalDate date = LocalDate.now();
+		  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		  String text = "2022-03-19";
+		  LocalDate parsedDate = LocalDate.parse(text, formatter);
+		  System.out.println(parsedDate);
 		
 	}
 }
