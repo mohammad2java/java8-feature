@@ -249,4 +249,32 @@ Joda Date api
 	=> Alternative for simpledataformat is DateTimeFormatter .
 	*
 	*/
+	
+	
+	example:
+	
+	// Date <-> ZonedDateTime
+		Date date = new Date();
+		System.out.println(date);
+		
+		Instant instant = date.toInstant();
+		ZonedDateTime from = ZonedDateTime.ofInstant(instant, ZoneId.of("Asia/Calcutta"));
+		System.out.println(from);
+		
+		ZonedDateTime now = ZonedDateTime.now();
+		System.out.println(now);
+		
+		Instant instant2 = now.toInstant();
+		Date from2 = Date.from(instant2);
+		System.out.println(from2);
+		
+		// output
+		
+			Wed Apr 27 16:53:23 IST 2022
+			2022-04-27T16:53:23.811+05:30[Asia/Calcutta]
+			2022-04-27T16:53:23.903014+05:30[Asia/Calcutta]
+			Wed Apr 27 16:53:23 IST 2022
+
+		
+		
 		
