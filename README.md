@@ -105,6 +105,48 @@ Example:
 	
 Stream Api 
 --------------
+CORE INTERFACE FOR STREAM API
+--------------------------------
+						BaseStream
+						    |
+	 [IntStream,DoubleStream,LongStream,Stream<T>]
+
+	also built-in functional interface. (Function,Predicate,Supplier,Consumer)
+
+	 1) stream() method to generate Stream from Other                                   
+	                                  1) Collection(I).stream()
+	                                  2) Arrays(C).stream(arr)
+	                                  
+	  2)to generate Stream by core Interface static method:
+	  --------------------------------------------------------
+	  Reference one
+	 -----------------
+	 Stream.empty();
+	 Stream.generate(Math::random);
+	 Stream.of(10);
+	 Stream.of(1,2,3,4,4);
+	 Stream.iterate(10, n->n+2);
+	 
+	 primitive-one(IntStream,LongStream,DoubleStream[doesnt have range()/rangeClosed() ])
+	 ------------------------------------------------------------------------------------
+	 IntStream.empty();
+	 IntStream.generate(Math::random);
+	 IntStream.of(10);
+	 IntStream.of(1,2,3,4,4);
+	 IntStream.iterate(10, n->n+2);
+	 +2 extra 
+	 IntStream.range
+	 IntStream.rangeClosed
+	 
+	  
+	                                  
+	
+
+
+
+
+
+
 	Now java collection can used as stream of object using stream api to improve performance.
 	Need to learn
 	0) basic concept of stream
@@ -144,7 +186,10 @@ Stream Api
 		Stream<Integer> stream = Stream.of(1,2,3,4,5,6,7,8,9);
         stream.forEach(System.out::println);
         
+      
       3)Array to Stream  
+      
+      Arrays.stream(arr);
         
         
         //Predicate Interface 
