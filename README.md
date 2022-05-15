@@ -192,6 +192,10 @@ CORE INTERFACE FOR STREAM API
       Arrays.stream(arr);
         
         
+      4) String to Stream<Character>
+      ----------------------------------
+      Stream<Character> stream = "Amir".chars().boxed().map(s->Character.valueOf((char)s.intValue()));
+        
         //Predicate Interface 
         //its used to send test/validate someinput...
         
