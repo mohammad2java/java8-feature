@@ -325,14 +325,10 @@ Joda Date api
 			Wed Apr 27 16:53:23 IST 2022
 
 
-
-
-
-
 ##java Data Type deep concept
    ----------------------------------------------
       java contain 8 data type(primitives)
-      6 type number - 6(byte-1Byte,short-2Byte,int-4Byte,long-8Byte,float-4Byte,double-8Byte)
+      6 type for number - 6(byte-1Byte,short-2Byte,int-4Byte,long-8Byte,float-4Byte,double-8Byte)
       1 type for boolean (boolean-1bit) [0,1]
       1 type for character(char-2byte) --only positive num[0-(2^16-1)] = [0 to 65535]
        for byte -contains both negative & positive -- so in 1 byte = 8 bits
