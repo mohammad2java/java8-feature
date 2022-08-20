@@ -137,15 +137,6 @@ CORE INTERFACE FOR STREAM API
 	 +2 extra 
 	 IntStream.range
 	 IntStream.rangeClosed
-	 
-	  
-	                                  
-	
-
-
-
-
-
 
 	Now java collection can used as stream of object using stream api to improve performance.
 	Need to learn
@@ -239,6 +230,10 @@ CORE INTERFACE FOR STREAM API
 	Processing by min() and max() methods  -- max or min using natural or comparator
 	forEach() method      --iterating
 	toArray() method      -- converting into array.
+	
+	example of nested group by.
+	Map<String, Map<String, Integer>> group = employees.stream().
+                collect(Collectors.groupingBy(Employee::getDept, Collectors.groupingBy(Employee::getCity, Collectors.summingInt(Employee::getSal))));
 
 
 Joda Date api
