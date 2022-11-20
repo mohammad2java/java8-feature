@@ -234,7 +234,44 @@ CORE INTERFACE FOR STREAM API
 	example of nested group by.
 	Map<String, Map<String, Integer>> group = employees.stream().
                 collect(Collectors.groupingBy(Employee::getDept, Collectors.groupingBy(Employee::getCity, Collectors.summingInt(Employee::getSal))));
+                                
+	  ==Parallel Streaming:
+	  -----------------------
+		  /*
+			 * parallel streaming can be achieved via two way.
+			 * 1) using parallel() of Stream
+			 * 2) using parallelStream() of Collection Interface(its default method)
+			 * internally it use forkjoin threadpool to manage all to run parallely using thread.
+			 */
+	
 
+
+		Parallel Streams are cool, so should you use it always?
+		A big No!!
+		It is easy to convert sequential Stream to parallel Stream just by adding .parallel, 
+		does not mean you should always use it.
+		There are lots of factors you need to consider while using parallel streams otherwise 
+		you will suffer from negative impacts of parallel Streams.
+		Parallel Stream has much higher overhead than sequential Stream and 
+		it takes a good amount of time to coordinate between threads.
+		You need to consider parallel Stream if and only if:
+		
+		1) You have a large dataset to process.
+		2) if your source stream should be splittable.
+     	For example:
+	    ArrayList is very easy to split, as we can find a middle element by its index and split it
+	    but LinkedList is very hard to split and does not perform very well in most of the cases.
+		3)You are actually suffering from performance issues.
+		
+		The simplest formula for measuring parallelism is “NQ” model as provided by Brian Goetz in his presentation.
+	   ==
+		NQ Model:
+		N x Q >10000
+		where,
+     	  N = number of items in the dataset
+	      Q = amount of work per item
+	 if you see here N or Q should be big to start parallel streaming(multithreading).
+		
 
 Joda Date api
 ------------
