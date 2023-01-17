@@ -102,6 +102,37 @@ Example:
 	2) using method reference statement here findMyAge is static method of Greeting Interface
 	Greeting greet2 = Greeting::findMyAge
 	
+
+Notes : how many objects will be created from lamda expression/method reference.
+ 
+ Rules : 
+ 1) if lamda expression does not use any variable local/instance jvm will create singleton object regardless how many times lamda expression executed.
+ like :  Predicate<String> pr = s->s.isEmpty();
+ 
+ 1) if lamda expression use any variable local/instance jvm will create many objects equal to how many times lamda expression executed.
+ like :  
+ String name="amir"
+ Predicate<String> pr = s->s.isEmpty() && name.isEmpty();
+ here name is outer variables.
+ 
+ but if we will make it final locally or static variable ,,it will create single object for predicate.
+ like 
+  final String name="amir" 
+ Predicate<String> pr = s->s.isEmpty() && name.isEmpty();
+ 
+ 
+ for method ref:
+ --------------------
+ static method refrence will create single predicate Object
+ example:
+ Predicate<String> pr = =TestClass::checkEmpty;
+ 
+ instance method refrence will create many predicate Object as number of its called.
+ example:
+ Predicate<String> pr = =new TestClass()::checkEmpty;
+ 
+ 
+	
 	
 Stream Api 
 --------------
