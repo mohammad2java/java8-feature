@@ -430,8 +430,8 @@ Joda Date api
       
       major minor version for java.
       ================================
-      sometimes if project/sourcecode is compiler with higher version and run in lower version so you get error:
-      " java.lang.UnsupportedClassVersionError: UnsupportedVersionErrorExample : Unsupported major.minor version 52.0"
+      sometimes if project/sourcecode is compiled with higher version and run in lower version so you get error:
+      "java.lang.UnsupportedClassVersionError: UnsupportedVersionErrorExample : Unsupported major.minor version 52.0"
       formula:
 	major version number = 44+java_version 
 	like for java 8
@@ -457,7 +457,6 @@ Joda Date api
 	JDK 1.3 = 47 (0x2F hex),
 	JDK 1.2 = 46 (0x2E hex),
 	JDK 1.1 = 45 (0x2D hex).
-	
 	
 	ref:
 	https://en.wikipedia.org/wiki/Java_class_file#General_layout
