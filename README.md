@@ -460,4 +460,110 @@ Joda Date api
 	
 	ref:
 	https://en.wikipedia.org/wiki/Java_class_file#General_layout
-	
+
+
+
+---
+
+## 🧩 1. Internal working of`HashMap` in java8+?
+
+A **HashMap** stores key–value pairs.
+It allows **fast access** to values using keys by computing a **hash code**.
+
+```java
+Map<String, Integer> map = new HashMap<>();
+map.put("apple", 10);
+map.put("banana", 20);
+System.out.println(map.get("apple")); // 10
+```
+
+---
+
+## ⚙️ 2. Internal Structure
+
+In **Java 8**, a `HashMap` is implemented using:
+
+* **Array of Nodes** (buckets)
+* Each **Node** contains: `key`, `value`, `hash`, and `next` (for chaining)
+* If too many elements fall in the same bucket, Java 8 converts that linked list into a **balanced tree (red-black tree)** for better performance.
+
+---
+
+### 🧱 Internal Representation
+
+```java
+class Node<K,V> implements Map.Entry<K,V> {
+    final int hash;
+    final K key;
+    V value;
+    Node<K,V> next; // points to next node in same bucket
+}
+```
+
+---
+
+## 🧮 3. How `put()` Works
+
+Let’s see what happens when you do `map.put("apple", 10)`:
+
+1. **Compute hash:**
+   `hash = key.hashCode()`
+   (Then mix bits to reduce collisions)
+
+2. **Find bucket index:**
+   `index = (n - 1) & hash`
+   where `n` = current capacity of the table (default 16).
+
+3. **If bucket is empty:**
+   Create a new Node and insert it.
+
+4. **If bucket is not empty (collision):**
+
+    * Compare the hash and key.
+    * If same key found → **replace the value**.
+    * If different keys → **link it to the next node** (forming a chain).
+    * If chain length > 8 → it’s **converted to a tree** (to O(log n) lookup).
+
+---
+
+## 🔍 4. How `get()` Works
+
+When you do `map.get("apple")`:
+
+1. Compute the hash again.
+2. Find the bucket index using `(n - 1) & hash`.
+3. Search through:
+
+    * If tree → binary search in tree nodes.
+    * If linked list → traverse each node using `.next`.
+4. If key matches → return its value.
+
+---
+
+## 📊 6. Performance Summary
+
+| Operation  | Average Time | Worst Case (Tree) |
+| ---------- | ------------ | ----------------- |
+| `put()`    | O(1)         | O(log n)          |
+| `get()`    | O(1)         | O(log n)          |
+| `remove()` | O(1)         | O(log n)          |
+
+
+## Treeify Happens When:
+
+✅ Bucket chain length > 8 (TREEIFY_THRESHOLD)
+AND
+✅ Current HashMap capacity ≥ 64 (MIN_TREEIFY_CAPACITY)
+
+➡️ Then the linked list is treeified (converted into red-black tree nodes).
+
+## Untreeify — Convert Tree → Linked List
+
+When the map shrinks (for example, after removing elements):
+
+If a tree node’s bucket size drops below 6 (UNTREEIFY_THRESHOLD),
+the bucket will be converted back to a linked list for memory efficiency.
+---
+
+
+
