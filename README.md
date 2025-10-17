@@ -266,7 +266,15 @@ CORE INTERFACE FOR STREAM API
 	example of nested group by.
 	Map<String, Map<String, Integer>> group = employees.stream().
                 collect(Collectors.groupingBy(Employee::getDept, Collectors.groupingBy(Employee::getCity, Collectors.summingInt(Employee::getSal))));
-                                
+
+
+		 Stream.reduce -> reduce() is used to combine a stream of elements into a single result using a reduction function (like summing, multiplying, concatenating, etc.).
+		Form	Description	Return Type	Example	Notes
+		reduce((a,b)->a+b)	No initial value	Optional<T>	Optional.of(15)	Use when stream may be empty
+		reduce(10,(a,b)->a+b)	With identity	T	25	First a = 10 (identity)
+		reduce(10,(a,b)->a+b,(a,b)->a+b)	With combiner	T	25	For parallel streams
+
+	
 	  ==Parallel Streaming:
 	  -----------------------
 		  /*
@@ -564,6 +572,7 @@ When the map shrinks (for example, after removing elements):
 If a tree node’s bucket size drops below 6 (UNTREEIFY_THRESHOLD),
 the bucket will be converted back to a linked list for memory efficiency.
 ---
+
 
 
 
